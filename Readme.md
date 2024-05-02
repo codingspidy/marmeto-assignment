@@ -25,6 +25,6 @@ The frontend code is hosted on [GitHub](https://github.com/codingspidy/marmeto-a
 1. Clone the repository.
 2. Open the `index.html` file in a web browser.
 
-##live server
+##  Live website
 
-You can also view this project live at [link](https://marmeto-coding-assigment.vercel.app/) 
+You can also view this project live at [https://marmeto-coding-assigment.vercel.app/](https://marmeto-coding-assigment.vercel.app/) 
