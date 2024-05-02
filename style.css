@@ -130,7 +130,7 @@ ul {
 
 /* Product cards */
 .card {
-  max-width: 176px;
+  max-width: 184px;
   border-radius: 4px;
 }
 
@@ -140,7 +140,7 @@ ul {
 }
 
 .img-container img {
-  width: 176px;
+  width: 184px;
   object-fit: cover;
   object-position: top;
   height: 200px;
