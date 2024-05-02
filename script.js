@@ -1,8 +1,7 @@
 window.app = {};
-const Store = {
+app.store = {
     products: null,
-}
-app.store = Store;
+};
 
 const API = {
     url: "https://cdn.shopify.com/s/files/1/0564/3685/0790/files/multiProduct.json",
@@ -14,7 +13,8 @@ const API = {
 
 async function loadData() {
     app.store.products = await API.fetchData()
-    renderProducts()
+    renderTabs();
+    renderProducts();
 }
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -22,24 +22,35 @@ window.addEventListener("DOMContentLoaded", () => {
 })
 
 // Tab Navigation
-const tabs = document.querySelectorAll('#tabsContainer li');
-const contentContainers = document.querySelectorAll('#contentContainer > div');
+function renderTabs() {
+    const tabsContainer = document.getElementById("tabsContainer");
 
-function showContent(tab) {
-    contentContainers.forEach(container => container.classList.remove("active"));
-    tabs.forEach(t => t.classList.remove("active"));
+    app.store.products.categories.map((category, i) => {
+        const list = document.createElement("li");
+        list.innerHTML = `
+                        ${category.category_name}
+        `;
 
-    const contentId = `#${tab.dataset.tab}-content`;
-    const content = document.querySelector(contentId);
-    content.classList.add("active");
-    tab.classList.add('active');
-}
-tabs.forEach(tab => tab.addEventListener('click', () => showContent(tab)));
+        if (i == 0) {
+            list.classList.add("active")
+        }
+        list.dataset.tab = "tab" + (i + 1);
 
-function calculateDiscount(originalPrice, discountedPrice) {
-    const discountAmount = originalPrice - discountedPrice;
-    const discountPercentage = (discountAmount / originalPrice) * 100;
-    return discountPercentage.toFixed(2) + "%";
+        list.addEventListener('click', () => {
+            const tabs = tabsContainer.querySelectorAll("li");
+            const contentContainers = document.querySelectorAll('#contentContainer > div');
+                
+            contentContainers.forEach(container => container.classList.remove("active"));
+            tabs.forEach(t => t.classList.remove("active"));
+
+            const contentId = `#${list.dataset.tab}-content`;
+            const content = document.querySelector(contentId);
+            content.classList.add("active");
+            list.classList.add('active');
+
+        })
+        tabsContainer.appendChild(list);
+    })
 }
 
 function renderProducts() {
@@ -76,7 +87,6 @@ function renderProducts() {
                         </div>
                     `
 
-
             if (category.category_name == "Men") {
                 tab1Content.appendChild(item)
             }
@@ -89,4 +99,10 @@ function renderProducts() {
 
         })
     })
+}
+
+function calculateDiscount(originalPrice, discountedPrice) {
+    const discountAmount = originalPrice - discountedPrice;
+    const discountPercentage = (discountAmount / originalPrice) * 100;
+    return discountPercentage.toFixed(2) + "%";
 }
