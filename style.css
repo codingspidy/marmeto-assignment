@@ -65,6 +65,12 @@ ul {
 .text-red {
   color: #FF3737;
 }
+.hidden {
+  display: none;
+}
+.block {
+  display: block;
+}
 
 .container {
   width: 100%;
