@@ -1,15 +1,8 @@
-// Fetching and Storing Data
 window.app = {};
-
 const Store = {
     products: null,
 }
 app.store = Store;
-
-window.addEventListener("DOMContentLoaded", () => {
-    loadData()
-
-})
 
 const API = {
     url: "https://cdn.shopify.com/s/files/1/0564/3685/0790/files/multiProduct.json",
@@ -21,10 +14,12 @@ const API = {
 
 async function loadData() {
     app.store.products = await API.fetchData()
-    createProducts()
+    renderProducts()
 }
 
-
+window.addEventListener("DOMContentLoaded", () => {
+    loadData()
+})
 
 // Tab Navigation
 const tabs = document.querySelectorAll('#tabsContainer li');
@@ -39,7 +34,6 @@ function showContent(tab) {
     content.classList.add("active");
     tab.classList.add('active');
 }
-
 tabs.forEach(tab => tab.addEventListener('click', () => showContent(tab)));
 
 function calculateDiscount(originalPrice, discountedPrice) {
@@ -48,7 +42,7 @@ function calculateDiscount(originalPrice, discountedPrice) {
     return discountPercentage.toFixed(2) + "%";
 }
 
-function createProducts() {
+function renderProducts() {
     const tab1Content = document.getElementById("tab1-content");
     const tab2Content = document.getElementById("tab2-content");
     const tab3Content = document.getElementById("tab3-content");
@@ -76,8 +70,8 @@ function createProducts() {
                                 <h4 class="font-400 text-xs">${product.vendor}</h4>
                             </div>
                             <div class="price">
-                                <span class="text-xs">${product.price}</span>
-                                <span class="stroke text-grey text-xs">${product.compare_at_price}</span>
+                                <span class="text-xs">Rs ${product.price}.00</span>
+                                <span class="stroke text-grey text-xs">${product.compare_at_price}.00</span>
                                 <span class="text-xs text-red">${discount} Off</span>
                             </div>
                             <button class="cart-btn">Add to Cart</button>
@@ -95,8 +89,8 @@ function createProducts() {
                                 <h4 class="font-400 text-xs">${product.vendor}</h4>
                             </div>
                             <div class="price">
-                                <span class="text-xs">${product.price}</span>
-                                <span class="stroke text-grey text-xs">${product.compare_at_price}</span>
+                                <span class="text-xs">Rs ${product.price}.00</span>
+                                <span class="stroke text-grey text-xs">${product.compare_at_price}.00</span>
                                 <span class="text-xs text-red">${discount} Off</span>
                             </div>
                             <button class="cart-btn">Add to Cart</button>
@@ -104,7 +98,6 @@ function createProducts() {
                     `
                 }
            
-
                 if (category.category_name == "Men") {
                     tab1Content.appendChild(item)
                 }
