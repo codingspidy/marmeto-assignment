@@ -130,20 +130,19 @@ ul {
 
 /* Product cards */
 .card {
-  max-width: 184px;
-  border-radius: 4px;
+  width: 100%;
 }
 
 .img-container {
   position: relative;
-  border-radius: 4px;
 }
 
 .img-container img {
-  width: 184px;
+  width: 250px;
+  height: 260px;
   object-fit: cover;
   object-position: top;
-  height: 200px;
+  border-radius: 4px;
 }
 
 .details {
@@ -171,8 +170,7 @@ ul {
   background-color: #000;
   border: none;
   color: #fff;
-  width: 100%;
-  max-width: 200px;
+  width: 250px;
   margin-top: 8px;
 }
 
@@ -196,6 +194,16 @@ ul {
 
 
 @media (min-width: 450px) {
+  .card {
+    width: 184px;
+    }
+.cart-btn {
+  width: 184px;
+}
+    .img-container img {
+      height: 200px;
+      width: 184px;
+    }
   #contentContainer > div.active {
     grid-template-columns: 1fr 1fr;
   }  
