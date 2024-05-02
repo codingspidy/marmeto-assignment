@@ -27,4 +27,4 @@ The frontend code is hosted on [GitHub](https://github.com/codingspidy/marmeto-a
 
 ##  Live website
 
-You can also view this project live at [https://marmeto-coding-assigment.vercel.app/](https://marmeto-coding-assigment.vercel.app/) 
+You can also view this project live at [https://marmeto-assesmen1.netlify.app/](https://marmeto-coding-assigment.vercel.app/) 
